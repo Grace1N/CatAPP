@@ -25,9 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.catapp.R
@@ -48,7 +51,13 @@ fun BMIcalcScreen(navController: NavController){
         Column (
             modifier = Modifier.padding(15.dp)
         ){
-            Text(text = "BMI Calculator")
+            Text(text = "BMI Calculator",
+                fontSize = 40.sp ,
+                modifier = Modifier.padding(start = 20.dp, top = 20.dp),
+                color = Color.Magenta,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Cursive,
+                textAlign = TextAlign.Center)
             FontWeight.Bold
         }
 
@@ -71,7 +80,7 @@ fun BMIcalcScreen(navController: NavController){
                 mutableStateOf("")
             }
             OutlinedTextField(value = secondNumber, onValueChange = {secondNumber = it},
-                label = { Text(text = "Enter first height")},
+                label = { Text(text = "Enter your height")},
                 modifier = Modifier.fillMaxWidth(0.9f),
                 shape = RoundedCornerShape(20.dp)
             )
@@ -198,6 +207,6 @@ fun BMIcalcScreen(navController: NavController){
 @Composable
 fun BMIcalcScreenPreview(){
     CatAPPTheme {
-            BMIcalcScreen(rememberNavController())
+        BMIcalcScreen(rememberNavController())
     }
 }

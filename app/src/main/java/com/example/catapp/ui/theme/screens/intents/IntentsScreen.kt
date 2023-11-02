@@ -6,15 +6,21 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.MediaStore
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.displayCutoutPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -42,7 +48,7 @@ import com.example.catapp.ui.theme.CatAPPTheme
 @Composable
 fun IntentsScreen(navController: NavHostController){
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -55,7 +61,13 @@ fun IntentsScreen(navController: NavHostController){
             context.startActivity(intent)
 
 
-        }) {
+        },
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_textsms_24),
+                contentDescription ="SMS icon",
+                modifier = Modifier.size(20.dp))
             Text(text = "SMS")
 
         }
@@ -67,7 +79,13 @@ fun IntentsScreen(navController: NavHostController){
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Dear M..........")
             context.startActivity(Intent.createChooser(emailIntent, "Send email..."))
 
-        }) {
+        },
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_attach_email_24),
+                contentDescription ="Email icon",
+                modifier = Modifier.size(20.dp))
             Text(text = "Email")
 
         }
@@ -75,7 +93,13 @@ fun IntentsScreen(navController: NavHostController){
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             ActivityCompat.startActivityForResult(context as Activity, takePictureIntent, 1,null)
 
-        }) {
+        },
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_camera_alt_24),
+                contentDescription ="Camera icon",
+                modifier = Modifier.size(20.dp))
             Text(text = "Camera")
 
         }
@@ -86,7 +110,13 @@ fun IntentsScreen(navController: NavHostController){
             shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, download this app from ......!")
             context.startActivity(shareIntent)
 
-        }) {
+        }, shape = CutCornerShape(10),
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_share_24),
+                contentDescription ="Share icon",
+                modifier = Modifier.size(20.dp))
             Text(text = "Share")
 
         }
@@ -97,7 +127,13 @@ fun IntentsScreen(navController: NavHostController){
             if (simToolKitLaunchIntent != null) {
                 context.startActivity(simToolKitLaunchIntent)
             }
-        }) {
+        }, shape = CutCornerShape(10),
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_attach_money_24),
+                contentDescription ="Money icon",
+                modifier = Modifier.size(20.dp))
             Text(text = "Mpesa")
 
         }
@@ -117,7 +153,14 @@ fun IntentsScreen(navController: NavHostController){
                 context.startActivity(intent)
             }
 
-        }) {
+        }, shape = CutCornerShape(10),
+            border = BorderStroke(1.dp, Color.Red),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)) {
+            Image(
+                painterResource(id = R.drawable.baseline_call_24),
+                contentDescription ="Call icon",
+                modifier = Modifier.size(20.dp))
+
             Text(text = "Call")
 
         }
@@ -125,6 +168,7 @@ fun IntentsScreen(navController: NavHostController){
             modifier = Modifier
                 .background(Color.Transparent)
                 .fillMaxWidth().padding(top = 40.dp)
+
 
 
         ) {

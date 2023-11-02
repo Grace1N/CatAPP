@@ -1,5 +1,6 @@
 package com.example.catapp.ui.theme.screens.calculator
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -25,9 +27,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.catapp.R
@@ -36,7 +41,6 @@ import com.example.catapp.navigation.ROUTE_BMICALC
 import com.example.catapp.navigation.ROUTE_CALCULATOR
 import com.example.catapp.navigation.ROUTE_INTENTS
 import com.example.catapp.ui.theme.CatAPPTheme
-import java.time.format.TextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,8 +51,16 @@ fun CalculatorScreen(navController: NavController){
         Column (
             modifier = Modifier.padding(15.dp)
         ){
-            Text(text = "Calculator")
+            Text(text = "Calculator",
+                fontSize = 40.sp ,
+                modifier = Modifier.padding(start = 20.dp, top = 20.dp),
+                color = Color.Yellow,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Cursive,
+                textAlign = TextAlign.Center
+                )
             FontWeight.Bold
+
         }
 
         Column (
@@ -83,6 +95,8 @@ fun CalculatorScreen(navController: NavController){
                 val num2 = secondNumber.toDoubleOrNull() ?: 0.0
                 result = (num1 + num2).toString()
             },
+                border = BorderStroke(1.dp, Color.Red),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 15.dp)
@@ -95,6 +109,8 @@ fun CalculatorScreen(navController: NavController){
                 val num2 = secondNumber.toDoubleOrNull() ?: 0.0
                 result = (num1 * num2).toString()
             },
+                border = BorderStroke(1.dp, Color.Red),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 15.dp)
@@ -108,6 +124,8 @@ fun CalculatorScreen(navController: NavController){
                 val num2 = secondNumber.toDoubleOrNull() ?: 0.0
                 result = (num1 / num2).toString()
             },
+                border = BorderStroke(1.dp, Color.Red),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 15.dp)
@@ -119,6 +137,8 @@ fun CalculatorScreen(navController: NavController){
                 val num2 = secondNumber.toDoubleOrNull() ?: 0.0
                 result = (num1 - num2).toString()
             },
+                border = BorderStroke(1.dp, Color.Red),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 15.dp)
