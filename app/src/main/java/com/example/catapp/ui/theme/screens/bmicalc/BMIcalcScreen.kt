@@ -1,5 +1,6 @@
 package com.example.catapp.ui.theme.screens.bmicalc
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -69,7 +71,7 @@ fun BMIcalcScreen(navController: NavController){
                 mutableStateOf("")
             }
             OutlinedTextField(value = firstNumber, onValueChange = {firstNumber = it},
-                label = { Text(text = "Enter your weight")},
+                label = { Text(text = "Enter your weight(kg)")},
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 30.dp),
@@ -80,7 +82,7 @@ fun BMIcalcScreen(navController: NavController){
                 mutableStateOf("")
             }
             OutlinedTextField(value = secondNumber, onValueChange = {secondNumber = it},
-                label = { Text(text = "Enter your height")},
+                label = { Text(text = "Enter your height(m)")},
                 modifier = Modifier.fillMaxWidth(0.9f),
                 shape = RoundedCornerShape(20.dp)
             )
@@ -93,18 +95,27 @@ fun BMIcalcScreen(navController: NavController){
                 val num2 = secondNumber.toDoubleOrNull() ?: 0.0
                 result = (num1 / (num2 * num2)).toString()
             },
+                border = BorderStroke(1.dp, Color.Magenta),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(top = 15.dp)
             ) {
-                Text(text = "calculate BMI")
+                Text(text = "CALCULATE BMI")
             }
 
 
 
-
             Text(text = "result: $result")
-
+            if (result<= 10.toString()){
+                Text(text = "You are underweight")
+            }else if (result<= 29.toString()){
+                Text(text = "You are normal weight")
+            }else if (result<= 34.toString()) {
+                Text(text = "You are overweight")
+            } else {
+                Text(text ="You are obese")
+            }
 
 
 
