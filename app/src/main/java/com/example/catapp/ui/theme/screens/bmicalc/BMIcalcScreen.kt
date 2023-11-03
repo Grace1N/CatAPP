@@ -107,15 +107,18 @@ fun BMIcalcScreen(navController: NavController){
 
 
             Text(text = "result: $result")
-            if (result<= 10.toString()){
+            if (result<= 19.toString() ){
                 Text(text = "You are underweight")
-            }else if (result<= 29.toString()){
+            }else if (result<= 25.toString()){
                 Text(text = "You are normal weight")
-            }else if (result<= 34.toString()) {
+            }else if (result<= (25..30).toString()) {
                 Text(text = "You are overweight")
-            } else {
-                Text(text ="You are obese")
+            } else if (result<= (30..40).toString()) {
+                Text(text = "You are obese")
+            } else{
+                Text(text = "Try Again")
             }
+
 
 
 
