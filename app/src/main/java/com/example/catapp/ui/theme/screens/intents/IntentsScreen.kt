@@ -11,7 +11,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.displayCutoutPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,7 +24,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.catapp.R
@@ -74,7 +71,7 @@ fun IntentsScreen(navController: NavHostController){
         Button(onClick = {
 
             val emailIntent =
-                Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "gracenjoroge4r@gmail.com", null))
+                Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "graceapp@gmail.com", null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "JOB APPLICATION")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Dear M..........")
             context.startActivity(Intent.createChooser(emailIntent, "Send email..."))
@@ -138,7 +135,7 @@ fun IntentsScreen(navController: NavHostController){
 
         }
         Button(onClick = {
-            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0707826578"))
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0707826908"))
             if (ContextCompat.checkSelfPermission(
                     context,
                     Manifest.permission.CALL_PHONE

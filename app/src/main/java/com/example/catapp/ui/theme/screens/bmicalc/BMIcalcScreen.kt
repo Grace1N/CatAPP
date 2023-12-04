@@ -120,10 +120,6 @@ fun BMIcalcScreen(navController: NavController){
             }
 
 
-
-
-
-
             BottomAppBar(
                 modifier = Modifier
                     .background(Color.Transparent)
